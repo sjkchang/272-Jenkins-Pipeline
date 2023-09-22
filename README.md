@@ -48,7 +48,7 @@ Kubernetes orchestrates the deployment, scaling, and management of the container
 
 1. **Clone the Repository:**
    ```bash
-   [git clone https://github.com/your-github-username/restaurant-services.git](https://github.com/TejaChilumula/Serverless-and-Kubernetes.git)
+     git clone https://github.com/TejaChilumula/Serverless-and-Kubernetes.git
    ```
 
 2. **Navigate to the Project Directory:**
