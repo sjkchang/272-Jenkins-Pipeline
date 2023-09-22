@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bill-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bill-service
+  template:
+    metadata:
+      labels:
+        app: bill-service
+    spec:
+      containers:
+      - name: bill-service
+        image: tejachilumula007/bill_apis.1.0:bill_apis.1.0
+        ports:
+        - containerPort: 3003
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: bill-service
+spec:
+  selector:
+    app: bill-service
+  ports:
+    - protocol: TCP
+      port: 3003
+      targetPort: 3003
+  type: NodePort
+
