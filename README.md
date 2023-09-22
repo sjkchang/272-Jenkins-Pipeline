@@ -56,11 +56,48 @@ Kubernetes orchestrates the deployment, scaling, and management of the container
    cd Restaurant - API's
    ```
 
-3. **Run KIND**
+   Folder Hierarchy
+
+   
+   restaurant-app/
+   │<br/>
+   ├── frontend/<br/>
+   │   ├── index.html<br/>
+   │   ├── styles.css<br/>
+   │   ├── scripts.js<br/>
+   │   └── Dockerfile<br/>
+   │<br/>
+   ├── order-service/<br/>
+   │   ├── server.js<br/>
+   │   ├── package.json<br/>
+   │   ├── Dockerfile<br/>
+   │   └── ...<br/>
+   │<br/>
+   ├── cooking-service/<br/>
+   │   ├── server.js<br/>
+   │   ├── package.json<br/>
+   │   ├── Dockerfile<br/>
+   │   └── ...<br/>
+   │<br/>
+   ├── billing-service/<br/>
+   │   ├── server.js<br/>
+   │   ├── package.json<br/>
+   │   ├── Dockerfile<br/>
+   │   └── ...<br/>
+   │<br/>
+   └── cleanup-service/<br/>
+       ├── server.js<br/>
+       ├── package.json<br/>
+       ├── Dockerfile<br/>
+       └── ...<br/>
+
+   
+
+4. **Run KIND**
    ```bash
      choco install kind
      ```
-4. **Create a Kubernetes Cluster with kind:**
+5. **Create a Kubernetes Cluster with kind:**
    ```bash 
       kind create cluster --name my-cluster
       kind load docker-image yourdockerhubusername/orderService:latest --name my-cluster
@@ -68,7 +105,7 @@ Kubernetes orchestrates the deployment, scaling, and management of the container
       kind load docker-image yourdockerhubusername/cookServices:latest --name my-cluster
       kind load docker-image yourdockerhubusername/frontend:latest --name my-cluster
    ```
-5. **Deploy the Services:**
+6. **Deploy the Services:**
    ```bash
      kubectl apply -f billServices.yaml
      kubectl apply -f cookServices.yaml
