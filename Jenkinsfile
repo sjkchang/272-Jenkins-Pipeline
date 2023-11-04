@@ -1,21 +1,14 @@
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent-alpine'
-            }
-      }
+    agent {
+        docker {
+            image 'node:20.9.0-alpine3.18' 
+            args '-p 3000:3000' 
+        }
+    }
     triggers {
         pollSCM '* * * * *'
     }
     stages {
-        stage('Setup') {
-            steps {
-                echo "Setting Up.."
-                sh '''
-                apk add nodejs npm
-                '''
-            }
-        }
         stage('Build') {
             steps {
                 echo "Building.."
