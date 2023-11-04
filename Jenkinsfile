@@ -12,8 +12,11 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                cd Restaurant-Monolith
-                pip install -r requirements.txt
+                cd Restaurant-Monolith/Server
+                docker build -t sjkchang/restaurant-backend .
+
+                cd ../frontEnd
+                docker build -t sjkchang/restaurant-frontend .
                 '''
             }
         }
@@ -21,9 +24,9 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
+                echo "doing testing stuff.."
+
+                ls
                 '''
             }
         }
