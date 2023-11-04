@@ -139,3 +139,5 @@ app.get("/billing", (req, res) => {
 app.listen(PORT, () => {
     console.log(`OrderService listening on http://localhost:${PORT}`);
 });
+
+module.exports = app;

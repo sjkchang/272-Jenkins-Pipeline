@@ -8,16 +8,23 @@ pipeline {
         pollSCM '* * * * *'
     }
     stages {
+        stage('Setup') {
+            steps {
+                echo "Setting Up.."
+                sh '''
+                apk add nodejs npm
+                '''
+            }
+        }
         stage('Build') {
             steps {
                 echo "Building.."
                 sh '''
                 cd Restaurant-Monolith/Server
-                docker build -t sjkchang/restaurant-backend .
+                npm install
 
                 cd ../frontEnd
-                docker build -t sjkchang/restaurant-frontend .
-                '''
+                '''*/
             }
         }
         stage('Test') {
@@ -25,7 +32,9 @@ pipeline {
                 echo "Testing.."
                 sh '''
                 echo "doing testing stuff.."
-
+                cd Restaurant-Monolith/Server
+                npm test
+                
                 ls
                 '''
             }
