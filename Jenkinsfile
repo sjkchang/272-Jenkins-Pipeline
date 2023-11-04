@@ -24,7 +24,7 @@ pipeline {
                 npm install
 
                 cd ../frontEnd
-                '''*/
+                '''
             }
         }
         stage('Test') {
